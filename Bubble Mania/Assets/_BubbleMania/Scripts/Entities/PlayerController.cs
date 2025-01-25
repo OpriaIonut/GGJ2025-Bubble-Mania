@@ -71,7 +71,7 @@ namespace BubbleMania
                 anim.SetBool("Running", true);
                 if (globalMovement)
                 {
-                    transform.position += new Vector3(horizontal, 0.0f, vertical) * movementSpeed * Time.deltaTime;
+                    transform.position += new Vector3(horizontal, 0.0f, vertical).normalized * movementSpeed * Time.deltaTime;
                 }
                 else
                 {
