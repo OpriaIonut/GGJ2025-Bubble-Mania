@@ -16,17 +16,17 @@ namespace BubbleMania
 
         [SerializeField] private float enemyDamageIncreaseMulti = 1.5f;
         [SerializeField] private float enemyHpIncreaseMulti = 1.5f;
-        [SerializeField] private float gradualEnemyIncreaseCooldown = 3;
-        [SerializeField] private float gradualPhaseSpawnDelay = 1.5f;
+        [SerializeField] private float gradualEnemyIncreaseCooldown = 10;
+        [SerializeField] private float gradualPhaseSpawnDelay = 2.0f;
 
         [Header("Burst")]
         [SerializeField] private Vector2 burstCooldownTimes = new Vector2(60.0f, 120.0f);
         [SerializeField] private float burstCountIncreaseCooldown = 240.0f;
-        [SerializeField] private Vector2Int enemiesPerBurst = new Vector2Int(20, 30);
+        [SerializeField] private Vector2Int enemiesPerBurst = new Vector2Int(20, 40);
         [SerializeField] private float burstCenterDistFromPlayer = 50.0f;
         [SerializeField] private float burstEnemySpawnRadius = 15.0f;
 
-        [SerializeField] private float endCycleEnemyDecrementMulti = 0.5f;
+        [SerializeField] private float endCycleEnemyDecrementMulti = 0.65f;
 
         [Header("StartState")]
         [SerializeField] private float startSpawnDelay = 3.0f;
@@ -42,7 +42,7 @@ namespace BubbleMania
         private float phaseStartTime = 0.0f;
 
         private float currentSpawnDelay;
-        private int enemiesToSpawn = 3;
+        private int enemiesToSpawn = 2;
         private float enemySpeed = 2.5f;
         private float enemyHealth;
         private float enemyDamage;
@@ -137,7 +137,7 @@ namespace BubbleMania
                 float dist = Random.Range(spawnDistFromPlayer.x, spawnDistFromPlayer.y);
                 Vector3 randPos = new Vector3(Mathf.Sin(angle), 0.0f, Mathf.Cos(angle)) * dist;
 
-                SpawnEnemyAtPosition(playerTransf.position + randPos + Vector3.up * 1.0f);
+                SpawnEnemyAtPosition(playerTransf.position + randPos + Vector3.up * 1.5f);
             }
         }
 
@@ -159,7 +159,7 @@ namespace BubbleMania
                     Vector3 enemyPos = new Vector3(Mathf.Sin(enemySpawnAngle), 0.0f, Mathf.Cos(enemySpawnAngle));
                     enemyPos = burstCenterPos + enemyPos * enemyDistFromCenter;
 
-                    SpawnEnemyAtPosition(enemyPos + Vector3.up * 1.0f);
+                    SpawnEnemyAtPosition(enemyPos + Vector3.up * 1.5f);
                 }
             }
         }
@@ -181,8 +181,8 @@ namespace BubbleMania
 
         private void IncreaseEnemyAttributes()
         {
-            enemyHealth *= enemyHpIncreaseMulti;
-            enemyDamage *= enemyDamage;
+            //enemyHealth *= enemyHpIncreaseMulti;
+            //enemyDamage *= enemyDamage;
         }
 
         private void CalculateEnemyCountIncreaseFactors()
