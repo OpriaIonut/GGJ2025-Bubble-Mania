@@ -21,6 +21,11 @@ namespace BubbleMania
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
 
+            if(Input.GetKeyDown(KeyCode.M))
+            {
+                globalMovement = !globalMovement;
+            }
+
             if (globalMovement)
             {
                 transform.position += new Vector3(horizontal, 0.0f, vertical) * movementSpeed * Time.deltaTime;

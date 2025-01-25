@@ -185,6 +185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpawnDelay: 3
   startEnemiesToSpawn: 5
+  startEnemySpeed: 2.5
+  startEnemyHealth: 5
   spawnDistFromPlayer: {x: 17, y: 25}
   enemyPrefab: {fileID: 6838959988963593587, guid: 2cb3aba29fa902c44b531f1b2b043ba2, type: 3}
 --- !u!1 &1211350652
@@ -426,13 +428,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585268117}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.60876137, y: 0, z: 0, w: 0.7933534}
-  m_LocalPosition: {x: 0, y: 15.35, z: -4}
+  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
+  m_LocalPosition: {x: 0, y: 14.9, z: -7.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!114 &1585268121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,13 +649,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3491211048758343841, guid: f09c3cb2519b908498f08fa126a2a32e, type: 3}
+      propertyPath: shootCooldown
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491211048758343841, guid: f09c3cb2519b908498f08fa126a2a32e, type: 3}
+      propertyPath: projectileSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7598781907253027601, guid: f09c3cb2519b908498f08fa126a2a32e, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7598781907253027601, guid: f09c3cb2519b908498f08fa126a2a32e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
