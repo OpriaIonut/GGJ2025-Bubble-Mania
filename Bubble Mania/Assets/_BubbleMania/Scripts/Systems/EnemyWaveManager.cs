@@ -60,7 +60,7 @@ namespace BubbleMania
                 Vector3 randPos = new Vector3(Mathf.Sin(angle), 0.0f, Mathf.Cos(angle)) * dist;
 
                 GameObject clone = Instantiate(enemyPrefab);
-                clone.transform.position = playerTransf.position + randPos;
+                clone.transform.position = playerTransf.position + randPos + Vector3.up * 1.0f;
 
                 EnemyController enemyController = clone.GetComponent<EnemyController>();
                 BubbleType type = (BubbleType)Random.Range(0, (int)BubbleType.Count);
