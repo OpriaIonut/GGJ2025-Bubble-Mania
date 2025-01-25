@@ -9,6 +9,7 @@ namespace BubbleMania
         [SerializeField] private float movementSpeed = 1.0f;
         [SerializeField] private bool globalMovement = true;
         [SerializeField] private float maxHealth = 100.0f;
+        [SerializeField] private Animator anim;
 
         [Header("UI")]
         [SerializeField] private RectTransform healthbar;
@@ -65,13 +66,21 @@ namespace BubbleMania
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
 
-            if (globalMovement)
+            if(horizontal != 0.0f || vertical != 0.0f)
             {
-                transform.position += new Vector3(horizontal, 0.0f, vertical) * movementSpeed * Time.deltaTime;
+                anim.SetBool("Running", true);
+                if (globalMovement)
+                {
+                    transform.position += new Vector3(horizontal, 0.0f, vertical) * movementSpeed * Time.deltaTime;
+                }
+                else
+                {
+                    transform.position += (transform.forward * vertical + transform.right * horizontal).normalized * movementSpeed * Time.deltaTime;
+                }
             }
             else
             {
-                transform.position += (transform.forward * vertical + transform.right * horizontal).normalized * movementSpeed * Time.deltaTime;
+                anim.SetBool("Running", false);
             }
         }
 

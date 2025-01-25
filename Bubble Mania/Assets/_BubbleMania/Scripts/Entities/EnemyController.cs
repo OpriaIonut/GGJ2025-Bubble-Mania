@@ -73,6 +73,7 @@ namespace BubbleMania
         private void Move()
         {
             Vector3 moveDir = (player.position - transform.position).normalized;
+            moveDir.y = 0.0f;
             transform.LookAt(transform.position + moveDir);
             transform.position += moveDir * movementSpeed * Time.deltaTime;
         }
