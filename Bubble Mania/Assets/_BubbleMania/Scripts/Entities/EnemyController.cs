@@ -51,7 +51,9 @@ namespace BubbleMania
             damage = _damage;
 
             EnemyFactory enemyFactory = Locator.GetService<EnemyFactory>();
-            enemyGFX.material.color = enemyFactory.GetColorByType(enemyType);
+            foreach (var meshRenderer in GetComponentsInChildren<MeshRenderer>()) {
+                meshRenderer.material.color = enemyFactory.GetColorByType(enemyType);
+            }
         }
 
         public void TakeDamage(float damage)

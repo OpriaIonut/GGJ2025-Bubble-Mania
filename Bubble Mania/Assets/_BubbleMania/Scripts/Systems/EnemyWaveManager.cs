@@ -57,8 +57,8 @@ namespace BubbleMania
             {
                 float angle = Random.Range(0.0f, 2.0f * Mathf.PI);
                 float dist = Random.Range(spawnDistFromPlayer.x, spawnDistFromPlayer.y);
-                Vector3 randPos = new Vector3(Mathf.Sin(angle), 0.0f, Mathf.Cos(angle)) * dist;
-
+                Vector3 randPos = new Vector3(Mathf.Sin(angle), 0.0f, Mathf.Cos(angle)) * dist + Vector3.up;
+                
                 GameObject clone = Instantiate(enemyPrefab);
                 clone.transform.position = playerTransf.position + randPos + Vector3.up * 1.0f;
 
