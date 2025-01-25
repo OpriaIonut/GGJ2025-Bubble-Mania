@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace BubbleMania
 {
@@ -13,6 +15,10 @@ namespace BubbleMania
         [SerializeField] private float projectileDamage = 5.0f;
         [SerializeField] private BubbleType startBubbleType = BubbleType.Red;
 
+        [Header("UI")]
+        [SerializeField] private List<Image> bubbleControlImages;
+
+        private bool passThroughEnemies = true;
         private BubbleType bubbleType;
         private float lastShootTime = 0.0f;
 
@@ -24,16 +30,29 @@ namespace BubbleMania
         private void Start()
         {
             bubbleType = startBubbleType;
+            UpdateBubbleSelectionUI();
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+            {
                 bubbleType = BubbleType.Red;
-            if (Input.GetKeyDown(KeyCode.Alpha2))
+                UpdateBubbleSelectionUI();
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+            {
                 bubbleType = BubbleType.Blue;
-            if(Input.GetKeyDown(KeyCode.Alpha3))
+                UpdateBubbleSelectionUI();
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
+            {
                 bubbleType = BubbleType.Green;
+                UpdateBubbleSelectionUI();
+            }
+
+            if (Input.GetKeyDown(KeyCode.N))
+                passThroughEnemies = !passThroughEnemies;
 
             if(Input.GetButton("Fire1") && Time.time - lastShootTime > shootCooldown)
             {
@@ -48,7 +67,18 @@ namespace BubbleMania
             clone.transform.position = firePoint.position;
 
             BubbleProjectile projectile = clone.GetComponent<BubbleProjectile>();
-            projectile.Initialize(bubbleType, projectileSpeed, projectileDamage, firePoint.forward);
+            projectile.Initialize(bubbleType, projectileSpeed, projectileDamage, firePoint.forward, passThroughEnemies);
+        }
+
+        private void UpdateBubbleSelectionUI()
+        {
+            for(int index = 0; index < bubbleControlImages.Count; ++index)
+            {
+                bubbleControlImages[index].enabled = true;
+            }
+
+            int currentBubble = (int)bubbleType;
+            bubbleControlImages[currentBubble].enabled = false;
         }
     }
 }

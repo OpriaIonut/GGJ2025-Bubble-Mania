@@ -9,14 +9,16 @@ namespace BubbleMania
         private bool isInitialized = false;
         private float speed;
         private float damage;
+        private bool passThroughEnemies;
         private BubbleType type;
         private Vector3 moveDir;
 
-        public void Initialize(BubbleType _type, float _speed, float _damage, Vector3 _moveDir)
+        public void Initialize(BubbleType _type, float _speed, float _damage, Vector3 _moveDir, bool _passThroughEnemies)
         {
             isInitialized = true;
             type = _type;
             speed = _speed;
+            passThroughEnemies = _passThroughEnemies;
             damage = _damage;
             moveDir = _moveDir;
 
@@ -39,11 +41,13 @@ namespace BubbleMania
             if(other.transform.root.tag == "Enemy")
             {
                 EnemyController controller = other.transform.root.GetComponent<EnemyController>();
-                if(controller.EnemyType == type)
+                if (controller.EnemyType == type)
                 {
                     controller.TakeDamage(damage);
                     Destroy(gameObject);
                 }
+                else if (!passThroughEnemies)
+                    Destroy(gameObject);
             }
         }
     }

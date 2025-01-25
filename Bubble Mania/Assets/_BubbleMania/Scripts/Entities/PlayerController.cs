@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace BubbleMania
 {
@@ -69,6 +71,13 @@ namespace BubbleMania
         private void Die()
         {
             gameOverPanel.SetActive(true);
+            StartCoroutine(ReloadScene());
+        }
+
+        private IEnumerator ReloadScene()
+        {
+            yield return new WaitForSeconds(5.0f);
+            SceneManager.LoadScene("GameMap");
         }
     }
 }
