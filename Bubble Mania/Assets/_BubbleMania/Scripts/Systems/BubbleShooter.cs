@@ -62,6 +62,26 @@ namespace BubbleMania
                 UpdateBubbleSelectionUI();
             }
 
+            float scroll = Input.GetAxis("Mouse ScrollWheel");
+            if (scroll != 0.0f)
+            {
+                int newIndex = (int)bubbleType;
+                if(scroll < 0.0f)
+                {
+                    newIndex--;
+                    if (newIndex < 0)
+                        newIndex = (int)BubbleType.Count - 1;
+                }
+                else
+                {
+                    newIndex++;
+                    if (newIndex >= (int)BubbleType.Count)
+                        newIndex = 0;
+                }
+                bubbleType = (BubbleType)newIndex;
+                UpdateBubbleSelectionUI();
+            }
+
             if (Input.GetKeyDown(KeyCode.N))
                 passThroughEnemies = !passThroughEnemies;
 
