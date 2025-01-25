@@ -7,7 +7,7 @@ namespace BubbleMania
     {
         public void _StartGame()
         {
-            SceneManager.LoadScene("GameMap");
+            SceneManager.LoadScene("NewMap");
         }
 
         public void _TitleMenu()
