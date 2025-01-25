@@ -21,11 +21,13 @@ namespace BubbleMania
 
         private bool isGamePaused = false;
 
+        private TimerSystem timer;
         public BubbleType EnemyType { get { return enemyType; } }
 
         private void Start()
         {
             player = Locator.GetService<PlayerController>().transform;
+            timer = Locator.GetService<TimerSystem>();
 
             PauseSystem pauseSystem = Locator.GetService<PauseSystem>();
             pauseSystem.AddListener_OnGamePaused(OnGamePaused);
@@ -80,11 +82,11 @@ namespace BubbleMania
             if (isGamePaused)
                 return;
 
-            if(other.transform.root.tag == "Player" && Time.time - lastDamagedPlayerTime > damagePlayerCooldown)
+            if(other.transform.root.tag == "Player" && timer.GameTime - lastDamagedPlayerTime > damagePlayerCooldown)
             {
                 PlayerController controller = Locator.GetService<PlayerController>();
                 controller.TakeDamage(damage);
-                lastDamagedPlayerTime = Time.time;
+                lastDamagedPlayerTime = timer.GameTime;
             }
         }
 

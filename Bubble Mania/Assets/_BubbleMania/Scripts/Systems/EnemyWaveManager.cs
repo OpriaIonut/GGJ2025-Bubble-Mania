@@ -22,12 +22,15 @@ namespace BubbleMania
         private bool isGamePaused = false;
 
         private Transform playerTransf;
+        private TimerSystem timer;
 
         private void Start()
         {
             currentSpawnDelay = startSpawnDelay;
             enemiesToSpawn = startEnemiesToSpawn;
             enemySpeed = startEnemySpeed;
+
+            timer = Locator.GetService<TimerSystem>();
 
             PauseSystem pauseSystem = Locator.GetService<PauseSystem>();
             pauseSystem.AddListener_OnGamePaused(OnGamePaused);
@@ -41,10 +44,10 @@ namespace BubbleMania
             if (isGamePaused)
                 return;
 
-            if(Time.time - lastSpawnTime > currentSpawnDelay)
+            if(timer.GameTime - lastSpawnTime > currentSpawnDelay)
             {
                 SpawnEnemies();
-                lastSpawnTime = Time.time;
+                lastSpawnTime = timer.GameTime;
             }
         }
 

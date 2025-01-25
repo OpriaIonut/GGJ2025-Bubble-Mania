@@ -23,6 +23,7 @@ namespace BubbleMania
         private float lastShootTime = 0.0f;
 
         private bool isGamePaused = false;
+        private TimerSystem timer;
 
         private void Awake()
         {
@@ -33,6 +34,8 @@ namespace BubbleMania
         {
             bubbleType = startBubbleType;
             UpdateBubbleSelectionUI();
+
+            timer = Locator.GetService<TimerSystem>();
 
             PauseSystem pauseSystem = Locator.GetService<PauseSystem>();
             pauseSystem.AddListener_OnGamePaused(OnGamePaused);
@@ -62,10 +65,10 @@ namespace BubbleMania
             if (Input.GetKeyDown(KeyCode.N))
                 passThroughEnemies = !passThroughEnemies;
 
-            if(Input.GetButton("Fire1") && Time.time - lastShootTime > shootCooldown)
+            if(Input.GetButton("Fire1") && timer.GameTime - lastShootTime > shootCooldown)
             {
                 ShootBubble();
-                lastShootTime = Time.time;
+                lastShootTime = timer.GameTime;
             }
         }
 
