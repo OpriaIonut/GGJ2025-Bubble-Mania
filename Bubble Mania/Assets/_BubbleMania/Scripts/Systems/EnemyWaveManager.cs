@@ -19,15 +19,28 @@ namespace BubbleMania
         private float enemySpeed;
         private float enemyHealth;
 
+        private bool isGamePaused = false;
+
+        private Transform playerTransf;
+
         private void Start()
         {
             currentSpawnDelay = startSpawnDelay;
             enemiesToSpawn = startEnemiesToSpawn;
             enemySpeed = startEnemySpeed;
+
+            PauseSystem pauseSystem = Locator.GetService<PauseSystem>();
+            pauseSystem.AddListener_OnGamePaused(OnGamePaused);
+
+            PlayerController player = Locator.GetService<PlayerController>();
+            playerTransf = player.transform;
         }
 
         private void Update()
         {
+            if (isGamePaused)
+                return;
+
             if(Time.time - lastSpawnTime > currentSpawnDelay)
             {
                 SpawnEnemies();
@@ -44,12 +57,17 @@ namespace BubbleMania
                 Vector3 randPos = new Vector3(Mathf.Sin(angle), 0.0f, Mathf.Cos(angle)) * dist;
 
                 GameObject clone = Instantiate(enemyPrefab);
-                clone.transform.position = randPos;
+                clone.transform.position = playerTransf.position + randPos;
 
                 EnemyController enemyController = clone.GetComponent<EnemyController>();
                 BubbleType type = (BubbleType)Random.Range(0, (int)BubbleType.Count);
                 enemyController.InitializeEnemy(type, enemySpeed, enemyHealth, startEnemyDamage);
             }
+        }
+
+        private void OnGamePaused(bool isPaused)
+        {
+            isGamePaused = isPaused;
         }
     }
 }

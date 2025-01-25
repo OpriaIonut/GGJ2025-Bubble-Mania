@@ -22,6 +22,8 @@ namespace BubbleMania
         private BubbleType bubbleType;
         private float lastShootTime = 0.0f;
 
+        private bool isGamePaused = false;
+
         private void Awake()
         {
             Locator.RegisterService(this);
@@ -31,10 +33,16 @@ namespace BubbleMania
         {
             bubbleType = startBubbleType;
             UpdateBubbleSelectionUI();
+
+            PauseSystem pauseSystem = Locator.GetService<PauseSystem>();
+            pauseSystem.AddListener_OnGamePaused(OnGamePaused);
         }
 
         private void Update()
         {
+            if (isGamePaused)
+                return;
+
             if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
             {
                 bubbleType = BubbleType.Red;
@@ -79,6 +87,11 @@ namespace BubbleMania
 
             int currentBubble = (int)bubbleType;
             bubbleControlImages[currentBubble].enabled = false;
+        }
+
+        private void OnGamePaused(bool isPaused)
+        {
+            isGamePaused = isPaused;
         }
     }
 }

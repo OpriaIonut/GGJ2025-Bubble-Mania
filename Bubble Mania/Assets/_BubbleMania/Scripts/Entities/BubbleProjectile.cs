@@ -13,6 +13,14 @@ namespace BubbleMania
         private BubbleType type;
         private Vector3 moveDir;
 
+        private bool isGamePaused = false;
+
+        private void Start()
+        {
+            PauseSystem pauseSystem = Locator.GetService<PauseSystem>();
+            pauseSystem.AddListener_OnGamePaused(OnGamePaused);
+        }
+
         public void Initialize(BubbleType _type, float _speed, float _damage, Vector3 _moveDir, bool _passThroughEnemies)
         {
             isInitialized = true;
@@ -30,6 +38,9 @@ namespace BubbleMania
 
         private void Update()
         {
+            if (isGamePaused)
+                return;
+
             if(isInitialized)
             {
                 transform.position += moveDir * speed * Time.deltaTime;
@@ -44,11 +55,23 @@ namespace BubbleMania
                 if (controller.EnemyType == type)
                 {
                     controller.TakeDamage(damage);
-                    Destroy(gameObject);
+                    DestroyProjectile();
                 }
                 else if (!passThroughEnemies)
-                    Destroy(gameObject);
+                    DestroyProjectile();
             }
+        }
+
+        private void OnGamePaused(bool isPaused)
+        {
+            isGamePaused = isPaused;
+        }
+
+        private void DestroyProjectile()
+        {
+            PauseSystem pauseSystem = Locator.GetService<PauseSystem>();
+            pauseSystem.RemoveListener_OnGamePaused(OnGamePaused);
+            Destroy(gameObject);
         }
     }
 }

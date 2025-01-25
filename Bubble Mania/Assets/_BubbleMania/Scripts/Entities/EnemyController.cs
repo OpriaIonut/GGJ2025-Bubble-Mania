@@ -19,15 +19,23 @@ namespace BubbleMania
         private float damage;
         private float lastDamagedPlayerTime = 0.0f;
 
+        private bool isGamePaused = false;
+
         public BubbleType EnemyType { get { return enemyType; } }
 
         private void Start()
         {
             player = Locator.GetService<PlayerController>().transform;
+
+            PauseSystem pauseSystem = Locator.GetService<PauseSystem>();
+            pauseSystem.AddListener_OnGamePaused(OnGamePaused);
         }
 
         private void Update()
         {
+            if (isGamePaused)
+                return;
+
             Move();
         }
 
@@ -55,6 +63,8 @@ namespace BubbleMania
 
         private void Die()
         {
+            PauseSystem pauseSystem = Locator.GetService<PauseSystem>();
+            pauseSystem.RemoveListener_OnGamePaused(OnGamePaused);
             Destroy(gameObject);
         }
 
@@ -67,12 +77,20 @@ namespace BubbleMania
 
         private void OnTriggerStay(Collider other)
         {
+            if (isGamePaused)
+                return;
+
             if(other.transform.root.tag == "Player" && Time.time - lastDamagedPlayerTime > damagePlayerCooldown)
             {
                 PlayerController controller = Locator.GetService<PlayerController>();
                 controller.TakeDamage(damage);
                 lastDamagedPlayerTime = Time.time;
             }
+        }
+
+        private void OnGamePaused(bool isPaused)
+        {
+            isGamePaused = isPaused;
         }
     }
 }

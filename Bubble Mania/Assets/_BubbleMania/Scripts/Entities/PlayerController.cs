@@ -14,6 +14,7 @@ namespace BubbleMania
         [SerializeField] private RectTransform healthbar;
         [SerializeField] private GameObject gameOverPanel;
 
+        private bool isGamePaused = false;
         private float currentHealth;
 
         private void Awake()
@@ -24,10 +25,16 @@ namespace BubbleMania
         private void Start()
         {
             currentHealth = maxHealth;
+
+            PauseSystem pauseSystem = Locator.GetService<PauseSystem>();
+            pauseSystem.AddListener_OnGamePaused(OnGamePaused);
         }
 
         private void Update()
         {
+            if (isGamePaused)
+                return;
+
             if(Input.GetKeyDown(KeyCode.M))
             {
                 globalMovement = !globalMovement;
@@ -71,6 +78,10 @@ namespace BubbleMania
         private void Die()
         {
             gameOverPanel.SetActive(true);
+
+            PauseSystem pauseSystem = Locator.GetService<PauseSystem>();
+            pauseSystem.ToggleGamePause(false);
+
             StartCoroutine(ReloadScene());
         }
 
@@ -78,6 +89,11 @@ namespace BubbleMania
         {
             yield return new WaitForSeconds(5.0f);
             SceneManager.LoadScene("GameMap");
+        }
+
+        private void OnGamePaused(bool isPaused)
+        {
+            isGamePaused = isPaused;
         }
     }
 }
