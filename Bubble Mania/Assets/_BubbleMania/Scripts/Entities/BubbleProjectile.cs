@@ -4,7 +4,7 @@ namespace BubbleMania
 {
     public class BubbleProjectile : MonoBehaviour
     {
-        [SerializeField] private MeshRenderer renderer;
+        [SerializeField] private MeshRenderer meshRend;
 
         private bool isInitialized = false;
         private float speed;
@@ -21,7 +21,9 @@ namespace BubbleMania
             moveDir = _moveDir;
 
             EnemyFactory enemyFactory = Locator.GetService<EnemyFactory>();
-            renderer.material.color = enemyFactory.GetColorByType(type);
+            meshRend.material.color = enemyFactory.GetColorByType(type);
+
+            Destroy(gameObject, 10.0f);
         }
 
         private void Update()

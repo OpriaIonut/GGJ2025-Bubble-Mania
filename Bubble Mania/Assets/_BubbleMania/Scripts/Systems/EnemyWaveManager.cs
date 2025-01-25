@@ -8,6 +8,8 @@ namespace BubbleMania
         [SerializeField] private int startEnemiesToSpawn = 5;
         [SerializeField] private float startEnemySpeed = 5.0f;
         [SerializeField] private float startEnemyHealth = 5.0f;
+        [SerializeField] private float startEnemyDamage = 5.0f;
+
         [SerializeField] private Vector2 spawnDistFromPlayer;
         [SerializeField] private GameObject enemyPrefab;
 
@@ -46,7 +48,7 @@ namespace BubbleMania
 
                 EnemyController enemyController = clone.GetComponent<EnemyController>();
                 BubbleType type = (BubbleType)Random.Range(0, (int)BubbleType.Count);
-                enemyController.InitializeEnemy(type, enemySpeed, enemyHealth);
+                enemyController.InitializeEnemy(type, enemySpeed, enemyHealth, startEnemyDamage);
             }
         }
     }

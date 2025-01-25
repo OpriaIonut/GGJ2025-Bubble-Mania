@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5567349296833176263}
   - component: {fileID: 543677878222312654}
   - component: {fileID: 517837786512487809}
-  - component: {fileID: 9207754110961328903}
   m_Layer: 0
   m_Name: GFX
   m_TagString: Untagged
@@ -89,29 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &9207754110961328903
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3130794425702389303}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4070870968491355360
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +99,6 @@ GameObject:
   - component: {fileID: 7534312424814059830}
   - component: {fileID: 1618467807067130471}
   - component: {fileID: 5958365460799784352}
-  - component: {fileID: 7295478466121250481}
   m_Layer: 0
   m_Name: Eyes
   m_TagString: Untagged
@@ -199,27 +174,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7295478466121250481
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4070870968491355360}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4112930800322558621
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,6 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8626514833176480169}
   - component: {fileID: 72216711306340017}
+  - component: {fileID: 8561734591933999007}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -344,8 +299,32 @@ MonoBehaviour:
   movementSpeed: 5
   enemyType: 0
   enemyGFX: {fileID: 517837786512487809}
+  damagePlayerCooldown: 2
   healthbarParent: {fileID: 8900300878124164233}
   healthbar: {fileID: 5386120276828199742}
+--- !u!136 &8561734591933999007
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6838959988963593587}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7090935370808411209
 GameObject:
   m_ObjectHideFlags: 0
