@@ -10,6 +10,7 @@ namespace BubbleMania
         [SerializeField] private bool globalMovement = true;
         [SerializeField] private float maxHealth = 100.0f;
         [SerializeField] private Animator anim;
+        [SerializeField] private Rigidbody rb;
 
         [Header("UI")]
         [SerializeField] private RectTransform healthbar;
@@ -17,6 +18,7 @@ namespace BubbleMania
 
         private bool isGamePaused = false;
         private float currentHealth;
+        private Vector3 moveDir;
 
         private void Awake()
         {
@@ -45,6 +47,11 @@ namespace BubbleMania
             Move();
         }
 
+        private void FixedUpdate()
+        {
+            rb.MovePosition(rb.position + moveDir * movementSpeed * Time.fixedDeltaTime);
+        }
+
         public void TakeDamage(float damage)
         {
             currentHealth -= damage;
@@ -71,16 +78,17 @@ namespace BubbleMania
                 anim.SetBool("Running", true);
                 if (globalMovement)
                 {
-                    transform.position += new Vector3(horizontal, 0.0f, vertical).normalized * movementSpeed * Time.deltaTime;
+                    moveDir = new Vector3(horizontal, 0.0f, vertical).normalized;
                 }
                 else
                 {
-                    transform.position += (transform.forward * vertical + transform.right * horizontal).normalized * movementSpeed * Time.deltaTime;
+                    moveDir = (transform.forward * vertical + transform.right * horizontal).normalized;
                 }
             }
             else
             {
                 anim.SetBool("Running", false);
+                moveDir = Vector3.zero;
             }
         }
 
