@@ -32,6 +32,11 @@ namespace BubbleMania
                 gamePauseUI.SetActive(true);
         }
 
+        public void HidePauseBtn()
+        {
+            pauseImg.transform.parent.gameObject.SetActive(false);
+        }
+
         public void AddListener_OnGamePaused(UnityAction<bool> callback)
         {
             onGamePaused += callback;

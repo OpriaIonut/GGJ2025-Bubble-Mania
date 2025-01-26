@@ -67,6 +67,12 @@ namespace BubbleMania
 
         private void Die()
         {
+            if (Locator.HasService<EnemyKillCounter>())
+            {
+                EnemyKillCounter counter = Locator.GetService<EnemyKillCounter>();
+                counter.RegisterEnemyDeath();
+            }
+
             PauseSystem pauseSystem = Locator.GetService<PauseSystem>();
             pauseSystem.RemoveListener_OnGamePaused(OnGamePaused);
             Destroy(gameObject);

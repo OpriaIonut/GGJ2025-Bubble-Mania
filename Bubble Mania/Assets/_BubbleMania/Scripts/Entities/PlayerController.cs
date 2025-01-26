@@ -98,14 +98,7 @@ namespace BubbleMania
 
             PauseSystem pauseSystem = Locator.GetService<PauseSystem>();
             pauseSystem.ToggleGamePause(false);
-
-            StartCoroutine(ReloadScene());
-        }
-
-        private IEnumerator ReloadScene()
-        {
-            yield return new WaitForSeconds(5.0f);
-            SceneManager.LoadScene("GameMap");
+            pauseSystem.HidePauseBtn();
         }
 
         private void OnGamePaused(bool isPaused)
