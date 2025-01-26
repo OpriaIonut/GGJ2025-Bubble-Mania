@@ -28,6 +28,9 @@ namespace _BubbleMania.Scripts.Utils {
                 var useHighlight = random.Next(100) < highlightPercent;
                 meshRenderer.material = useHighlight ? highlightMat : defaultMat;
                 meshRenderer.GetComponent<MeshFilter>().mesh = useHighlight ? highlightMesh : defaultMesh;
+                if (useHighlight) {
+                    meshRenderer.transform.parent.localRotation = Quaternion.Euler(0, ((int)random.Next(0, 6)) * 60, 0);
+                }
             }
         }
     }
