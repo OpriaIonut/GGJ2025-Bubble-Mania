@@ -1,4 +1,4 @@
-﻿%YAML 1.1
+%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!29 &1
 OcclusionCullingSettings:
@@ -700,9 +700,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5622e70cdf6004c95970e238c09e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chillPhaseDuration: 60
+  gradualPhaseDuration: 150
+  enemyDamageIncreaseMulti: 1.5
+  enemyHpIncreaseMulti: 1.5
+  gradualEnemyIncreaseCooldown: 10
+  gradualPhaseSpawnDelay: 2
+  burstCooldownTimes: {x: 60, y: 120}
+  burstCountIncreaseCooldown: 240
+  enemiesPerBurst: {x: 20, y: 40}
+  burstCenterDistFromPlayer: 50
+  burstEnemySpawnRadius: 15
+  endCycleEnemyDecrementMulti: 0.65
   startSpawnDelay: 3
-  startEnemiesToSpawn: 5
-  startEnemySpeed: 2.5
   startEnemyHealth: 5
   startEnemyDamage: 5
   spawnDistFromPlayer: {x: 38, y: 45}
