@@ -64,7 +64,7 @@ namespace BubbleMania
                 else if (!passThroughEnemies)
                     DestroyProjectile();
             }
-            else if(other.transform.root.tag != "Player")
+            else if(other.transform.root.tag != "Player" && other.transform.tag != "IgnoreProjectileHit")
                 DestroyProjectile();
         }
 

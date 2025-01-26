@@ -897,6 +897,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3201148968434812004, guid: fb3e6b5d8a2228d4780412ee82cc80a6, type: 3}
+      propertyPath: m_TagString
+      value: IgnoreProjectileHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 5764852677403742455, guid: fb3e6b5d8a2228d4780412ee82cc80a6, type: 3}
+      propertyPath: m_TagString
+      value: IgnoreProjectileHit
+      objectReference: {fileID: 0}
     - target: {fileID: 7396324230383899065, guid: fb3e6b5d8a2228d4780412ee82cc80a6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -937,9 +945,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7715374067091835686, guid: fb3e6b5d8a2228d4780412ee82cc80a6, type: 3}
+      propertyPath: m_TagString
+      value: IgnoreProjectileHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025170659336198200, guid: fb3e6b5d8a2228d4780412ee82cc80a6, type: 3}
+      propertyPath: m_TagString
+      value: IgnoreProjectileHit
+      objectReference: {fileID: 0}
     - target: {fileID: 8615255400820390257, guid: fb3e6b5d8a2228d4780412ee82cc80a6, type: 3}
       propertyPath: m_Name
       value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 8857555795989912793, guid: fb3e6b5d8a2228d4780412ee82cc80a6, type: 3}
+      propertyPath: m_TagString
+      value: IgnoreProjectileHit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
