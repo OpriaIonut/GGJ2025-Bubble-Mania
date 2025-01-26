@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace BubbleMania
 {
@@ -11,6 +10,9 @@ namespace BubbleMania
         [SerializeField] private float maxHealth = 100.0f;
         [SerializeField] private Animator anim;
         [SerializeField] private Rigidbody rb;
+
+        [SerializeField] private GameObject hitVfx;
+        [SerializeField] private Color hitParticleColor;
 
         [Header("UI")]
         [SerializeField] private RectTransform healthbar;
@@ -56,6 +58,13 @@ namespace BubbleMania
         {
             currentHealth -= damage;
             healthbar.localScale = new Vector3(Mathf.Clamp01(currentHealth / maxHealth), 1.0f, 1.0f);
+
+            GameObject clone = Instantiate(hitVfx);
+            clone.transform.position = transform.position + Vector3.up * 2.0f;
+            ParticleSystem particle = clone.GetComponent<ParticleSystem>();
+            var module = particle.main;
+            module.startColor = new ParticleSystem.MinMaxGradient(hitParticleColor);
+            Destroy(clone, 2.0f);
 
             if (currentHealth <= 0.0f)
                 Die();
@@ -104,6 +113,7 @@ namespace BubbleMania
         private void OnGamePaused(bool isPaused)
         {
             isGamePaused = isPaused;
+            moveDir = Vector3.zero;
         }
     }
 }

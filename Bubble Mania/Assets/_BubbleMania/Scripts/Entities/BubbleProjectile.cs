@@ -5,6 +5,7 @@ namespace BubbleMania
     public class BubbleProjectile : MonoBehaviour
     {
         [SerializeField] private MeshRenderer meshRend;
+        [SerializeField] private GameObject hitVfx;
 
         private bool isInitialized = false;
         private float speed;
@@ -63,6 +64,8 @@ namespace BubbleMania
                 else if (!passThroughEnemies)
                     DestroyProjectile();
             }
+            else if(other.transform.root.tag != "Player")
+                DestroyProjectile();
         }
 
         private void OnGamePaused(bool isPaused)
@@ -72,6 +75,17 @@ namespace BubbleMania
 
         private void DestroyProjectile()
         {
+            GameObject clone = Instantiate(hitVfx);
+            clone.transform.position = transform.position;
+            ParticleSystem particle = clone.GetComponent<ParticleSystem>();
+            var module = particle.main;
+
+            Color newCol = meshRend.material.color;
+            newCol.a = 1.0f;
+            module.startColor = new ParticleSystem.MinMaxGradient(newCol);
+            module.startSpeed = 5.0f;
+            Destroy(clone, 2.0f);
+
             PauseSystem pauseSystem = Locator.GetService<PauseSystem>();
             pauseSystem.RemoveListener_OnGamePaused(OnGamePaused);
             Destroy(gameObject);
