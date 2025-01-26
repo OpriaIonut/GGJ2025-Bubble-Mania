@@ -114,6 +114,7 @@ namespace BubbleMania
         {
             isGamePaused = isPaused;
             moveDir = Vector3.zero;
+            anim.SetBool("Running", false);
         }
     }
 }
