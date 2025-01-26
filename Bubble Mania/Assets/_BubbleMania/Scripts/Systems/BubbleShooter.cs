@@ -18,7 +18,7 @@ namespace BubbleMania
         [Header("UI")]
         [SerializeField] private List<Image> bubbleControlImages;
 
-        private bool passThroughEnemies = true;
+        private bool passThroughEnemies = false;
         private BubbleType bubbleType;
         private float lastShootTime = 0.0f;
 
@@ -62,28 +62,15 @@ namespace BubbleMania
                 UpdateBubbleSelectionUI();
             }
 
-            float scroll = Input.GetAxis("Mouse ScrollWheel");
-            if (scroll != 0.0f)
+            if (Input.GetMouseButtonDown(1))
             {
-                int newIndex = (int)bubbleType;
-                if(scroll < 0.0f)
-                {
-                    newIndex--;
-                    if (newIndex < 0)
-                        newIndex = (int)BubbleType.Count - 1;
-                }
-                else
-                {
-                    newIndex++;
-                    if (newIndex >= (int)BubbleType.Count)
-                        newIndex = 0;
-                }
+                int newIndex = (int)bubbleType + 1;
+                if (newIndex >= (int)BubbleType.Count)
+                    newIndex = 0;
+
                 bubbleType = (BubbleType)newIndex;
                 UpdateBubbleSelectionUI();
             }
-
-            if (Input.GetKeyDown(KeyCode.N))
-                passThroughEnemies = !passThroughEnemies;
 
             if(Input.GetButton("Fire1") && timer.GameTime - lastShootTime > shootCooldown)
             {
@@ -105,11 +92,11 @@ namespace BubbleMania
         {
             for(int index = 0; index < bubbleControlImages.Count; ++index)
             {
-                bubbleControlImages[index].enabled = true;
+                bubbleControlImages[index].enabled = false;
             }
 
             int currentBubble = (int)bubbleType;
-            bubbleControlImages[currentBubble].enabled = false;
+            bubbleControlImages[currentBubble].enabled = true;
         }
 
         private void OnGamePaused(bool isPaused)

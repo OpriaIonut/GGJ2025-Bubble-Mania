@@ -372,7 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bace08d19e690948aa79d3d16304a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 6
+  movementSpeed: 7.5
   globalMovement: 1
   maxHealth: 100
   anim: {fileID: 2765541468015206086}
@@ -585,27 +585,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ebb775f5b2357934bbe0bb05970b26a5, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ebb775f5b2357934bbe0bb05970b26a5, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ebb775f5b2357934bbe0bb05970b26a5, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ebb775f5b2357934bbe0bb05970b26a5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.00068
+      value: -0.00061
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ebb775f5b2357934bbe0bb05970b26a5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0001
+      value: -0.00042
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ebb775f5b2357934bbe0bb05970b26a5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.00006
+      value: -0.00019
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ebb775f5b2357934bbe0bb05970b26a5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -642,7 +642,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: ebb775f5b2357934bbe0bb05970b26a5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 360e16a483813904fa2d6e422f0cabc0, type: 2}
+      objectReference: {fileID: 2100000, guid: 383488fbb8fc62a43a325fcfffdf6606, type: 2}
     - target: {fileID: 919132149155446097, guid: ebb775f5b2357934bbe0bb05970b26a5, type: 3}
       propertyPath: m_Name
       value: SM_Gun

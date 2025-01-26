@@ -43,7 +43,7 @@ namespace BubbleMania
 
         private float currentSpawnDelay;
         private int enemiesToSpawn = 2;
-        private float enemySpeed = 2.5f;
+        private float enemySpeed = 3.5f;
         private float enemyHealth;
         private float enemyDamage;
 

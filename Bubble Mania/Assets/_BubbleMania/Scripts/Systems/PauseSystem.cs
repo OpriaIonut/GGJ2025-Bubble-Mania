@@ -9,6 +9,7 @@ namespace BubbleMania
         [SerializeField] private GameObject pauseImg;
         [SerializeField] private GameObject playImg;
 
+        private bool isBtnHidden = false;
         private bool isGamePaused = false;
         private UnityAction<bool> onGamePaused;
 
@@ -17,6 +18,15 @@ namespace BubbleMania
         private void Awake()
         {
             Locator.RegisterService(this);
+        }
+
+        private void Update()
+        {
+            if (isBtnHidden)
+                return;
+
+            if (Input.GetKeyDown(KeyCode.P))
+                ToggleGamePause(true);
         }
 
         public void ToggleGamePause(bool displayUI)
@@ -34,6 +44,7 @@ namespace BubbleMania
 
         public void HidePauseBtn()
         {
+            isBtnHidden = true;
             pauseImg.transform.parent.gameObject.SetActive(false);
         }
 
