@@ -7,7 +7,13 @@ namespace _BubbleMania.Scripts.Utils {
         private Material defaultMat;
 
         [SerializeField]
+        private Mesh defaultMesh;
+
+        [SerializeField]
         private Material highlightMat;
+
+        [SerializeField]
+        private Mesh highlightMesh;
 
         [SerializeField]
         [Range(0, 100)]
@@ -19,7 +25,9 @@ namespace _BubbleMania.Scripts.Utils {
             Random random = new Random();
             var meshRenderers = GetComponentsInChildren<MeshRenderer>();
             foreach (var meshRenderer in meshRenderers) {
-                meshRenderer.material = random.Next(100) < highlightPercent ? highlightMat : defaultMat;
+                var useHighlight = random.Next(100) < highlightPercent;
+                meshRenderer.material = useHighlight ? highlightMat : defaultMat;
+                meshRenderer.GetComponent<MeshFilter>().mesh = useHighlight ? highlightMesh : defaultMesh;
             }
         }
     }

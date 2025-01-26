@@ -31,7 +31,10 @@ namespace BubbleMania
             moveDir = _moveDir;
 
             EnemyFactory enemyFactory = Locator.GetService<EnemyFactory>();
-            meshRend.material.color = enemyFactory.GetColorByType(type);
+            // pick the color but make alpha 10%
+            var colorByType = enemyFactory.GetColorByType(type);
+            colorByType.a = 0.4f;
+            meshRend.material.color = colorByType;
 
             Destroy(gameObject, 10.0f);
         }
