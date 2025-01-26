@@ -8,6 +8,7 @@ namespace BubbleMania
     {
         [SerializeField] private GameObject bubblePrefab;
         [SerializeField] private Transform firePoint;
+        [SerializeField] private AudioSource audio;
 
         [Header("Bullet Properties")]
         [SerializeField] private float shootCooldown = 1.0f;
@@ -86,6 +87,8 @@ namespace BubbleMania
 
             BubbleProjectile projectile = clone.GetComponent<BubbleProjectile>();
             projectile.Initialize(bubbleType, projectileSpeed, projectileDamage, transform.forward, passThroughEnemies);
+
+            audio.Play();
         }
 
         private void UpdateBubbleSelectionUI()

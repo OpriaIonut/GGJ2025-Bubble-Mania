@@ -13436,7 +13436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 15.000032, y: -50}
+  m_AnchoredPosition: {x: 15.000061, y: -50}
   m_SizeDelta: {x: 180, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1737040093
@@ -15884,6 +15884,63 @@ CapsuleCollider:
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 1.14, z: 0}
+--- !u!1001 &4387374948709595206
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2841788598772028462, guid: 11be799961f97df429e7f31b3632d335, type: 3}
+      propertyPath: m_Name
+      value: BGM
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493291121095830981, guid: 11be799961f97df429e7f31b3632d335, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493291121095830981, guid: 11be799961f97df429e7f31b3632d335, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493291121095830981, guid: 11be799961f97df429e7f31b3632d335, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493291121095830981, guid: 11be799961f97df429e7f31b3632d335, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493291121095830981, guid: 11be799961f97df429e7f31b3632d335, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493291121095830981, guid: 11be799961f97df429e7f31b3632d335, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493291121095830981, guid: 11be799961f97df429e7f31b3632d335, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493291121095830981, guid: 11be799961f97df429e7f31b3632d335, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493291121095830981, guid: 11be799961f97df429e7f31b3632d335, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493291121095830981, guid: 11be799961f97df429e7f31b3632d335, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 11be799961f97df429e7f31b3632d335, type: 3}
 --- !u!1001 &4567897726138932191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16022,10 +16079,6 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8532756701145855797, guid: f09c3cb2519b908498f08fa126a2a32e, type: 3}
-      propertyPath: hitVfx
-      value: 
-      objectReference: {fileID: 6477132278583678123, guid: d15f4f9459006b542b284a0cd9f3075d, type: 3}
-    - target: {fileID: 8532756701145855797, guid: f09c3cb2519b908498f08fa126a2a32e, type: 3}
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 1156183792}
@@ -16033,22 +16086,6 @@ PrefabInstance:
       propertyPath: gameOverPanel
       value: 
       objectReference: {fileID: 102050461}
-    - target: {fileID: 8532756701145855797, guid: f09c3cb2519b908498f08fa126a2a32e, type: 3}
-      propertyPath: hitParticleColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532756701145855797, guid: f09c3cb2519b908498f08fa126a2a32e, type: 3}
-      propertyPath: hitParticleColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532756701145855797, guid: f09c3cb2519b908498f08fa126a2a32e, type: 3}
-      propertyPath: hitParticleColor.g
-      value: 0.91918266
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532756701145855797, guid: f09c3cb2519b908498f08fa126a2a32e, type: 3}
-      propertyPath: hitParticleColor.r
-      value: 0.103773475
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16137,6 +16174,7 @@ SceneRoots:
   - {fileID: 1905429896}
   - {fileID: 101530036}
   - {fileID: 600035510}
+  - {fileID: 4387374948709595206}
   - {fileID: 1250798069}
   - {fileID: 577350551}
   - {fileID: 7612988313709088040}
