@@ -98,7 +98,7 @@ namespace BubbleMania
             clone.transform.position = firePoint.position;
 
             BubbleProjectile projectile = clone.GetComponent<BubbleProjectile>();
-            projectile.Initialize(bubbleType, projectileSpeed, projectileDamage, firePoint.forward, passThroughEnemies);
+            projectile.Initialize(bubbleType, projectileSpeed, projectileDamage, transform.forward, passThroughEnemies);
         }
 
         private void UpdateBubbleSelectionUI()
